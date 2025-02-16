@@ -10,9 +10,11 @@
     "firebase:emulators-start:offline": "node_modules/.bin/firebase --project demo-project emulators:start --only auth,firestore"
   },
   "dependencies": {
+    "firebase": "^11.3.1",
     "next": "14.2.23",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@types/node": "^20",

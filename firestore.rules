@@ -1,9 +1,32 @@
 rules_version = '2';
 
+function getIncomingAuth() {
+  return request.auth;
+}
+
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    function getAdminDoc(id){
+      return get(/databases/$(database)/documents/admins/$(id)).data;
+    }
+
     match /{document=**} {
       allow read, write: if false;
+    }
+
+    match /users/{id} {
+      function allowGetUsers() {
+        let incomingAuth = getIncomingAuth();
+        let adminDoc = getAdminDoc(incomingAuth.uid);
+        return adminDoc.id != null;
+      }
+
+      allow write: if true;
+      allow read: if allowGetUsers();
+    }
+    match /admins/{id} {
+      allow read, write: if true;
     }
   }
 }

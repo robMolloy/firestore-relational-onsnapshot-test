@@ -6,21 +6,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "firebase:emulators-start:offline": "node_modules/.bin/firebase --project demo-project emulators:start --only auth,firestore"
   },
   "dependencies": {
+    "next": "14.2.23",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.23"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.23",
+    "firebase-tools": "^13.31.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.23"
+    "typescript": "^5"
   }
 }
